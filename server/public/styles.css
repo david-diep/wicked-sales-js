@@ -1,0 +1,16 @@
+.item-picture{
+  object-fit: cover;
+  height: 300px;
+  width:90%;
+}
+body{
+  background-color: Ghostwhite;
+}
+
+.list-item{
+  border: 1px solid lightgrey;
+  background-color: white;
+}
+.list-item >p{
+  font-size: 1.5rem;
+}
