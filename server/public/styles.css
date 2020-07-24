@@ -5,6 +5,7 @@
 }
 body{
   background-color: Ghostwhite;
+  overflow-x:hidden;
 }
 
 .list-item{
