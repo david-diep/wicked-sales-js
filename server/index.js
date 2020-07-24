@@ -20,7 +20,7 @@ app.get('/api/health-check', (req, res, next) => {
 });
 
 app.get('/api/products', (req, res, next) => {
-
+  // gets all products, but no long description
   const sql = `
     select "p"."productId",
     "p"."name",
@@ -31,8 +31,38 @@ app.get('/api/products', (req, res, next) => {
   `;
   db.query(sql)
     .then(result => {
-      const grades = result.rows;
-      res.json(grades);
+      const products = result.rows;
+      res.json(products);
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'An unexpected error occurred.'
+      });
+    });
+});
+
+app.get('/api/products/:productId', (req, res, next) => {
+  // gets a particular product including longDescription
+  const productId = parseInt(req.params.productId, 10);
+  if (!Number.isInteger(productId) || productId <= 0) {
+    return res.status(400).json({
+      error: '"productId" must be a positive integer'
+    });
+  }
+  const sql = `
+    select *
+    from "products" as "p"
+    where "p"."productId" = $1
+  `;
+  const params = [productId];
+  db.query(sql, params)
+    .then(result => {
+      if (result.rowCount === 0) {
+        return next(new ClientError(`cannot find product with id ${productId}`));
+      }
+      const product = result.rows[0];
+      res.json(product);
     })
     .catch(err => {
       console.error(err);
