@@ -8,7 +8,7 @@ body{
   overflow-x:hidden;
 }
 
-.list-item{
+.list-item, .product-details{
   border: 1px solid lightgrey;
   background-color: white;
 }
@@ -19,10 +19,6 @@ body{
 .detail-image{
   max-width: 50%;
   margin-left:1rem;
-}
-.product-details{
-  background-color: white;
-  border: 1px solid lightgrey;
 }
 
 .back-text{
