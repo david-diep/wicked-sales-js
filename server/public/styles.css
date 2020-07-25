@@ -1,7 +1,7 @@
 .item-picture{
-  object-fit: cover;
-  height: 300px;
-  width:90%;
+  object-fit: contain;
+  height: 350px;
+  width:95%;
 }
 body{
   background-color: Ghostwhite;
@@ -14,4 +14,17 @@ body{
 }
 .list-item >p{
   font-size: 1.5rem;
+}
+
+.detail-image{
+  max-width: 50%;
+  margin-left:1rem;
+}
+.product-details{
+  background-color: white;
+  border: 1px solid lightgrey;
+}
+
+.back-text{
+  cursor: pointer;
 }
