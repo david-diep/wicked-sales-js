@@ -59,7 +59,7 @@ app.get('/api/products/:productId', (req, res, next) => {
   db.query(sql, params)
     .then(result => {
       if (result.rowCount === 0) {
-        return next(new ClientError(`cannot find product with id ${productId}`));
+        return next(new ClientError(`cannot find product with id ${productId}`), 404);
       }
       const product = result.rows[0];
       res.json(product);
@@ -95,12 +95,8 @@ app.get('/api/cart', (req, res, next) => {
       const products = result.rows;
       res.json(products);
     })
-    .catch(err => {
-      console.error(err);
-      res.status(500).json({
-        error: 'An unexpected error occurred.'
-      });
-    });
+    .catch(err => next(err)
+    );
 });
 
 app.post('/api/cart/:productId', (req, res, next) => {
@@ -121,7 +117,7 @@ app.post('/api/cart/:productId', (req, res, next) => {
   db.query(sql, params)
     .then(result => {
       if (!result.rows[0].price) { // if there is no price
-        return (new ClientError(`cannot find price of productId ${productId}`), 404);
+        throw new ClientError(`cannot find price of productId ${productId}`);
       }
       var price = result.rows[0].price;
       if (req.session.cartId) { // if a card id for the session already exists
@@ -149,7 +145,7 @@ app.post('/api/cart/:productId', (req, res, next) => {
       }
     ).then( // third then statement for original db.query - should recieve cartItemId from previous promise
       result => {
-        db.query(`
+        return db.query(`
         select "c"."cartItemId",
         "c"."price",
         "p"."productId",
@@ -164,12 +160,8 @@ app.post('/api/cart/:productId', (req, res, next) => {
         });
       }
     )
-    .catch(err => {
-      console.error(err);
-      res.status(500).json({
-        error: 'An unexpected error occurred.'
-      });
-    });
+    .catch(err => next(err)
+    );
 });
 
 app.use('/api', (req, res, next) => {
