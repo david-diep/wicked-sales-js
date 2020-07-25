@@ -20,7 +20,7 @@ class ProductList extends React.Component {
     return (<>
       <div className="d-flex flex-wrap justify-content-center">
         {this.state.products.map(item => (
-          <ProductListItem key={item.productId} item={item} />
+          <ProductListItem key={item.productId} item={item} setView={this.props.setView} />
         )
         )}
       </div>
