@@ -1,10 +1,19 @@
 import React from 'react';
 
 class Header extends React.Component {
+  constructor(props) {
+    super(props);
+    this.homeClick = this.backClick.bind(this);
+  }
+
+  homeclick() {
+    this.props.setView('catalog', {});
+  }
+
   render() {
     return (
       <header className="pl-3 bg-dark row justify-content-between">
-        <h2 className="m-3 text-light">
+        <h2 onClick={this.homeClick} className="m-3 text-light">
           <i className="fas fa-comment-dollar"></i>
           <a className="text-decoration-none text-reset" href="#"> Wicked <i className="fa fa-dollar-sign" aria-hidden="true"></i>ales</a>
         </h2>
