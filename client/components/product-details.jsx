@@ -5,7 +5,7 @@ class ProductDetails extends React.Component {
     super(props);
     this.state = { product: null, price: '' };
     this.backClick = this.backClick.bind(this);
-
+    this.handleAddCart = this.handleAddCart.bind(this);
   }
 
   componentDidMount() {
@@ -27,6 +27,10 @@ class ProductDetails extends React.Component {
     this.props.setView('catalog', {});
   }
 
+  handleAddCart() {
+    this.props.addToCart(this.state.product.productId);
+  }
+
   render() {
     if (this.state.product === null) {
       return (
@@ -43,6 +47,7 @@ class ProductDetails extends React.Component {
               <h3>{this.state.product.name}</h3>
               <p>${this.state.price}</p>
               <p>{this.state.product.shortDescription}</p>
+              <button className="btn btn-primary" onClick={this.handleAddCart}>Add to Cart</button>
             </div>
           </div>
           <div className="p-3">
