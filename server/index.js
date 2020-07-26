@@ -100,7 +100,7 @@ app.get('/api/cart', (req, res, next) => {
 });
 
 app.post('/api/cart/:productId', (req, res, next) => {
-  // gets all products, but no long description
+  // add a product to cart with productId
   const productId = parseInt(req.params.productId, 10);
   if (!Number.isInteger(productId) || productId <= 0) {
     return res.status(400).json({
