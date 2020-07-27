@@ -75,7 +75,7 @@ app.get('/api/products/:productId', (req, res, next) => {
 // below is for /api/cart
 
 app.get('/api/cart', (req, res, next) => {
-  // gets all productsin cart
+  // gets all cartItems in cart
   if (!req.session.cartId) {
     return res.json([]);
   }
@@ -100,7 +100,7 @@ app.get('/api/cart', (req, res, next) => {
 });
 
 app.post('/api/cart/:productId', (req, res, next) => {
-  // add a product to cart with productId
+  // add a product to cart with productId and return the cartItem with details
   const productId = parseInt(req.params.productId, 10);
   if (!Number.isInteger(productId) || productId <= 0) {
     return res.status(400).json({
@@ -144,7 +144,7 @@ app.post('/api/cart/:productId', (req, res, next) => {
         );
       }
     ).then( // third then statement for original db.query - should recieve cartItemId from previous promise
-      result => {
+      result => { // and will return everything except longDescription about the cart item
         return db.query(`
         select "c"."cartItemId",
         "c"."price",
@@ -162,6 +162,25 @@ app.post('/api/cart/:productId', (req, res, next) => {
     )
     .catch(err => next(err)
     );
+});
+
+app.post('/api/orders', (req, res, next) => {
+  if (!req.session.cartId) {
+    return res.status(400).json({ error: 'req.session has no cartId' });
+  }
+  if (!(req.body.name && req.body.creditCard && req.body.shippingAddress)) {
+    return res.status(400).json({ error: 'req.body needs a valid name, credit card number, and shipping address' });
+  }
+  db.query(`
+  insert into "orders" ("cartId", "name", "creditCard", "shippingAddress")
+  values ($1, $2, $3, $4)
+  returning *
+  `, [req.session.cartId, req.body.name, req.body.creditCard, req.body.shippingAddress])
+    .then(result => {
+      delete req.session.cartId;
+      res.status(201).json(result.rows[0]);
+    })
+    .catch(err => next(err));
 });
 
 app.use('/api', (req, res, next) => {
