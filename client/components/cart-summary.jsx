@@ -5,19 +5,26 @@ class CartSummary extends React.Component {
   constructor(props) {
     super(props);
     this.backClick = this.backClick.bind(this);
+    this.checkout = this.checkout.bind(this);
   }
 
   backClick() {
     this.props.setView('catalog', {});
   }
 
+  checkout() {
+    this.props.setView('checkout', {});
+  }
+
   render() {
-    let cartTotal = 0;
-    for (let i = 0; i < this.props.cart.length; i++) {
-      cartTotal += this.props.cart[i].price;
+    let total;
+    if (this.props.total === 0) {
+      total = 0;
+    } else {
+      const totalStr = this.props.total.toString();
+      total = totalStr.slice(0, totalStr.length - 2) + '.' + totalStr.slice(totalStr.length - 2);
     }
-    const totalStr = cartTotal.toString();
-    const total = totalStr.slice(0, totalStr.length - 2) + '.' + totalStr.slice(totalStr.length - 2);
+
     return (<>
       <p className="back-text p-3" onClick={this.backClick}>&lt;Back to Catalog</p>
       <div className="container">
@@ -27,8 +34,11 @@ class CartSummary extends React.Component {
             <CartSummaryItem key={index} item={item} />
           )
           )}
+        </div >
+        <div className="row justify-content-between align-items-center">
+          <h2 className="m-2">Item Total: ${total}</h2>
+          <button onClick={this.checkout} className="btn btn-primary">Go to Checkout</button>
         </div>
-        <h2 className="m-2">Item Total: ${total}</h2>
       </div>
     </>
     );
