@@ -1,2 +1,2 @@
 # wicked-sales-js
- Full stack Node.js &amp; React shopping cart app.
+ A full stack Node.js &amp; React shopping cart app.
