@@ -19,8 +19,8 @@ app.get('/api/health-check', (req, res, next) => {
     .catch(err => next(err));
 });
 
+// gets all products, but no long description
 app.get('/api/products', (req, res, next) => {
-  // gets all products, but no long description
   const sql = `
     select "p"."productId",
     "p"."name",
@@ -42,8 +42,8 @@ app.get('/api/products', (req, res, next) => {
     });
 });
 
+// gets a particular product info including longDescription
 app.get('/api/products/:productId', (req, res, next) => {
-  // gets a particular product including longDescription
   const productId = parseInt(req.params.productId, 10);
   if (!Number.isInteger(productId) || productId <= 0) {
     return res.status(400).json({
@@ -73,9 +73,8 @@ app.get('/api/products/:productId', (req, res, next) => {
 });
 
 // below is for /api/cart
-
+// gets all cartItems in cart
 app.get('/api/cart', (req, res, next) => {
-  // gets all cartItems in cart
   if (!req.session.cartId) {
     return res.json([]);
   }
@@ -99,12 +98,17 @@ app.get('/api/cart', (req, res, next) => {
     );
 });
 
+// add a product to cart with productId and return the cartItem with details
 app.post('/api/cart/:productId', (req, res, next) => {
-  // add a product to cart with productId and return the cartItem with details
   const productId = parseInt(req.params.productId, 10);
   if (!Number.isInteger(productId) || productId <= 0) {
     return res.status(400).json({
       error: '"productId" must be a positive integer'
+    });
+  }
+  if (!req.body.quantity) {
+    return res.status(400).json({
+      error: 'request must have quantity field'
     });
   }
 
@@ -116,14 +120,15 @@ app.post('/api/cart/:productId', (req, res, next) => {
   const params = [productId];
   db.query(sql, params)
     .then(result => {
-      if (!result.rows[0].price) { // if there is no price
+      if (!result.rows[0].price) {
         throw new ClientError(`cannot find price of productId ${productId}`);
       }
+      var quantityInserted = 0;
       var price = result.rows[0].price;
-      if (req.session.cartId) { // if a card id for the session already exists
+      if (req.session.cartId) {
         return { cartId: req.session.cartId, price: price };
-      } else { // if not, make a new one and assign it to the req.session and assign it to the next then statement
-        return ( // Interesting, can return the result of a promise
+      } else {
+        return (
           db.query(`
         insert into "carts" ("cartId", "createdAt")
         values (default, default)
@@ -162,8 +167,13 @@ app.post('/api/cart/:productId', (req, res, next) => {
     )
     .catch(err => next(err)
     );
+
+  function repeatInsert() {
+
+  }
 });
 
+// adds an order to the order sql table
 app.post('/api/orders', (req, res, next) => {
   if (!req.session.cartId) {
     return res.status(400).json({ error: 'req.session has no cartId' });
@@ -183,6 +193,7 @@ app.post('/api/orders', (req, res, next) => {
     .catch(err => next(err));
 });
 
+// catch errors
 app.use('/api', (req, res, next) => {
   next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
 });

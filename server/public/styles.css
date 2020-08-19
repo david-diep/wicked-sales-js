@@ -8,6 +8,9 @@ body{
   overflow-x:hidden;
 }
 
+.bg-purple{
+  background-color: rebeccapurple;
+}
 .list-item, .product-details,.summary-item{
   border: 1px solid lightgrey;
   background-color: white;
