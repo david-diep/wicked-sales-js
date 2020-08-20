@@ -47,9 +47,18 @@ export default class App extends React.Component {
       .then(cartItem => {
         const newCart = [...this.state.cart];
         newCart.push({ cartItem: cartItem });
-        const newTotal = this.state.total + cartItem.price;
+        const newTotal = this.state.total + cartItem.price * cartItem.quantity;
         this.setState({ cart: newCart, total: newTotal });
       });
+  }
+
+  deleteFromCart(productId) {
+    fetch('api/cart/' + productId, { method: 'DELETE' }).then(() => {
+      const newCart = [...this.state.cart];
+      const deleteIndex = newCart.findIndex(product => product.productId === productId);
+      newCart.splice(deleteIndex, 1);
+      this.setState({ cart: newCart });
+    });
   }
 
   render() {
