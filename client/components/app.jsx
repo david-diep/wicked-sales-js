@@ -26,7 +26,7 @@ export default class App extends React.Component {
     fetch('/api/cart').then(res => res.json()).then(cart => {
       let cartTotal = 0;
       for (let i = 0; i < cart.length; i++) {
-        cartTotal += cart[i].price;
+        cartTotal += cart[i].price * cart[i].quantity;
       }
       this.setState({ cart: cart, total: cartTotal });
     }).catch(err => console.error(err));
@@ -41,7 +41,7 @@ export default class App extends React.Component {
       .catch(err => console.error(err));
   }
 
-  addToCart(productId, quantity) {
+  addToCart(productId, quantity = 1) {
     fetch('/api/cart/' + productId, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ quantity: quantity }) })
       .then(res => res.json())
       .then(cartItem => {
@@ -55,7 +55,7 @@ export default class App extends React.Component {
   render() {
     let renderView;
     if (this.state.view.name === 'catalog') {
-      renderView = <ProductList setView={this.setView} />;
+      renderView = <ProductList setView={this.setView} addToCart={this.addToCart}/>;
     } else if (this.state.view.name === 'details') {
       renderView = <ProductDetails productId={this.state.view.params} setView={this.setView} addToCart={this.addToCart}/>;
     } else if (this.state.view.name === 'cart') {
