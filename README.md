@@ -35,6 +35,7 @@
  NPM  
  PostgreSQL
  
+ ### Getting Started
  Run "npm install" to install the dependencies.   
  Start the service postgreSql.    
  Rename the ".env.example" file to ".env" and customize its settings.   
