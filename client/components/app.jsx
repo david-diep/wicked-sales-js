@@ -43,13 +43,8 @@ export default class App extends React.Component {
 
   addToCart(productId, quantity = 1) {
     fetch('/api/cart/' + productId, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ quantity: quantity }) })
-      .then(res => res.json())
-      .then(cartItem => {
+      .then(res => {
         this.getCartItems();
-        // const newCart = [...this.state.cart];
-        // newCart.push({ cartItem: cartItem });
-        // const newTotal = this.state.total + cartItem.price * cartItem.quantity;
-        // this.setState({ cart: newCart, total: newTotal });
       });
   }
 
