@@ -1,11 +1,22 @@
-# wicked-sales-js
+# wicked-sales
  A full stack Node.js &amp; React shopping cart app.
+
+ ##Live Site
+ Try the live site here: http://wicked-sales.david-diep.com/
  
- Live Deployment: http://wicked-sales.david-diep.com/
+ ##Technologies Used
+ <li>PostgreSQL</li>
+ <li>React</li>
+ <li>Bootstrap</li>
+ <li>npm</li>
+ <li>Express</li>
+ <li>Javascript</li>
+ <li>CSS</li>
+ <li>HTML</li>
+ <li>Amazon Web Services EC2</li>
  
- Technologies used: PostgreSQL, React, JavaScript, CSS, Bootstrap, npm, express
- 
- As a storefront and shopping cart app:
+ ##Main Features
+ As a storefront and shopping cart app:  
  
   -The user can view a catalog of products on the front page showing the picture, price, and description of the item.  
   -The user can view a detailed description of the item on click.  
@@ -18,7 +29,18 @@
   
   Here's an example of what it looks like: ![Wild Plushies](https://i.imgur.com/nrZcW0R.png "Wild Plushies") 
  
- To launch a local copy, postgreSQL and npm is required. Run "npm install" to install the dependencies. Start the service postgreSql.  Rename the ".env.example" file to ".env" and customize its settings. Run "npm run db:import". Then run "npm run dev". A local copy should then be accessible at localhost:3000 or the DEV_SERVER_PORT specified in the .env folder.
+##Development  
+###System Requirements  
+ Node.js  
+ NPM  
+ PostgreSQL
+ 
+ Run "npm install" to install the dependencies.   
+ Start the service postgreSql.    
+ Rename the ".env.example" file to ".env" and customize its settings.   
+ Run "npm run db:import".   
+ Then run "npm run dev".   
+ A local copy should then be accessible at localhost:3000 or the localhost:DEV_SERVER_PORT specified in the .env folder.  
 
  
   
