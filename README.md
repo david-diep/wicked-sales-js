@@ -43,21 +43,21 @@
 
  2. Start the service postgreSQL.  
  
-   ```sudo service postgresql start```  
+    ```sudo service postgresql start```  
    
  3. Create the database.  
  
- ```createdb wickedSales```  
+   ```createdb wickedSales```  
  
  4. Import the database.  
  
- ```npm run db:import```  
+   ```npm run db:import```  
  
  5. Rename and copy the ```.env.example``` file to ```.env``` and customize its settings.   
  
  6. Start the website.   
  
-   ```npm run dev```
+    ```npm run dev```
  
  A local copy should then be accessible at localhost:3000 or the localhost:DEV_SERVER_PORT specified in the .env folder.  
 
