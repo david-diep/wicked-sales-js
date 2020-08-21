@@ -42,9 +42,9 @@
  Run "npm install" to install the dependencies.   
  Start the service postgreSql with  "sudo service postgresql start".  
  Create the database with "createdb wickedsales".  
-  Run "npm run db:import".  
+ Run "npm run db:import" to import the database.  
  Rename the ".env.example" file to ".env" and customize its settings.   
- Then run "npm run dev".   
+ Then run "npm run dev" to start the website.   
  A local copy should then be accessible at localhost:3000 or the localhost:DEV_SERVER_PORT specified in the .env folder.  
 
  
