@@ -44,6 +44,8 @@
     ```git clone https://github.com/david-diep/wicked-sales-js.git```  
  
  1. Run "npm install" to install the dependencies.   
+ 
+     ```npm install```
 
  2. Start the service postgreSQL.  
  
