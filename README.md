@@ -8,11 +8,14 @@
  <li>PostgreSQL</li>
  <li>React</li>
  <li>Bootstrap</li>
- <li>npm</li>
+ <li>Node</li>
+ <li>NPM</li>
  <li>Express</li>
  <li>Javascript</li>
  <li>CSS</li>
  <li>HTML</li>
+ <li>Webpack</li>
+ <li>Babel</li>
  <li>Amazon Web Services EC2</li>
  
  ## Main Features
