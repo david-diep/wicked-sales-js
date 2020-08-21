@@ -39,23 +39,23 @@
  - PostgreSQL
  
  ### Getting Started
-1. Run "npm install" to install the dependencies.   
+ 1. Run "npm install" to install the dependencies.   
 
- 2.Start the service postgreSQL.  
+ 2. Start the service postgreSQL.  
  
    ```sudo service postgresql start```  
    
- 3.Create the database.  
+ 3. Create the database.  
  
  ```createdb wickedSales```  
  
- 4.Import the database.  
+ 4. Import the database.  
  
  ```npm run db:import```  
  
- 5.Rename and copy the ```.env.example``` file to ```.env``` and customize its settings.   
+ 5. Rename and copy the ```.env.example``` file to ```.env``` and customize its settings.   
  
- 6.Start the website.   
+ 6. Start the website.   
  
    ```npm run dev```
  
