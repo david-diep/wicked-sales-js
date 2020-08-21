@@ -63,7 +63,7 @@ class ProductListItem extends React.Component {
               <div className="input-group-prepend">
                 <button className="btn btn-outline-secondary" type="button" onClick={this.handleClickMinus}>-</button>
               </div>
-              <input type="text" className=" form-control text-center" value={this.state.count} onChange={this.handleChange} aria-label="" aria-describedby="basic-addon1"></input>
+              <input type="number" className=" form-control text-center" value={this.state.count} onChange={this.handleChange} aria-label="" aria-describedby="basic-addon1"></input>
               <div className="input-group-append">
                 <button className="btn btn-outline-secondary" type="button" onClick={this.handleClickPlus}>+</button>
               </div>
