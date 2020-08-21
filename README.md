@@ -1,10 +1,10 @@
 # wicked-sales
  A full stack Node.js &amp; React shopping cart app.
 
- ##Live Site
+ ## Live Site
  Try the live site here: http://wicked-sales.david-diep.com/
  
- ##Technologies Used
+ ## Technologies Used
  <li>PostgreSQL</li>
  <li>React</li>
  <li>Bootstrap</li>
@@ -15,7 +15,7 @@
  <li>HTML</li>
  <li>Amazon Web Services EC2</li>
  
- ##Main Features
+ ## Main Features
  As a storefront and shopping cart app:  
  
   -The user can view a catalog of products on the front page showing the picture, price, and description of the item.  
@@ -29,8 +29,8 @@
   
   Here's an example of what it looks like: ![Wild Plushies](https://i.imgur.com/nrZcW0R.png "Wild Plushies") 
  
-##Development  
-###System Requirements  
+## Development  
+### System Requirements  
  Node.js  
  NPM  
  PostgreSQL
