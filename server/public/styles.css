@@ -7,7 +7,9 @@ body{
   background-color: Ghostwhite;
   overflow-x:hidden;
 }
-
+.w-35{
+  width:35%;
+}
 .bg-purple{
   background-color: rebeccapurple;
 }
