@@ -41,7 +41,7 @@ class CartSummaryItem extends React.Component {
         </div>
         <div className="d-flex flex-column align-items-center">
           <h5 className="mb-2">Quantity</h5>
-          <input type="text" className="w-25 form-control text-center" value={this.state.count} onChange={this.handleChange} ></input>
+          <input type="number" className="w-25 form-control text-center" value={this.state.count} onChange={this.handleChange} ></input>
         </div>
         <div className="d-flex flex-column align-items-center">
           <h5 className="mb-2">Total Price</h5>
