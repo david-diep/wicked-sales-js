@@ -17,10 +17,9 @@ class Header extends React.Component {
 
   render() {
     return (
-      <header className="pl-3 bg-dark row justify-content-between">
+      <header className="pl-3 bg-purple row justify-content-between">
         <h2 onClick={this.homeClick} className="m-3 text-light">
-          <i className="fas fa-comment-dollar"></i>
-          <a className="text-decoration-none text-reset" href="#"> Wicked <i className="fa fa-dollar-sign" aria-hidden="true"></i>ales</a>
+          <i className="fab fa-pagelines" aria-hidden="true"></i> Wild Plushies
         </h2>
 
         <h5 onClick={this.cartClick} className="mr-5 mt-4 text-light cart">{this.props.cartNum} Items <i className="fas fa-shopping-cart"></i>
