@@ -39,29 +39,29 @@
  - PostgreSQL
  
  ### Getting Started
- 0. Clone the repository.  
+ 1. Clone the repository.  
  
     ```git clone https://github.com/david-diep/wicked-sales-js.git```  
  
- 1. Run "npm install" to install the dependencies.   
+ 2. Run "npm install" to install the dependencies.   
  
      ```npm install```
 
- 2. Start the service postgreSQL.  
+ 3. Start the service postgreSQL.  
  
     ```sudo service postgresql start```  
    
- 3. Create the database.  
+ 4. Create the database.  
  
     ```createdb wickedSales```  
  
- 4. Import the database.  
+ 5. Import the database.  
  
     ```npm run db:import```  
  
- 5. Rename and copy the ```.env.example``` file to ```.env``` and customize its settings.   
+ 6. Rename and copy the ```.env.example``` file to ```.env``` and customize its settings.   
  
- 6. Start the website.   
+ 7. Start the website.   
  
     ```npm run dev```
  
