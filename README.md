@@ -30,7 +30,7 @@
   - The user can view their total in their cart and the number of items in their cart.
   - All information is stored and retrieved in the backend with PostgreSQL.  
   
-  Here's an example of what it looks like: ![Wild Plushies](https://i.imgur.com/nrZcW0R.png "Wild Plushies") 
+  Here's an example of what it looks like: ![Wicked Sales](https://i.imgur.com/8ct0LLT.png "Wicked Sales") 
  
 ## Development  
 ### System Requirements  
