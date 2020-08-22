@@ -12,6 +12,7 @@ export default class App extends React.Component {
     this.setView = this.setView.bind(this);
     this.addToCart = this.addToCart.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
+    this.deleteFromCart = this.deleteFromCart.bind(this);
   }
 
   setView(name, params) {
@@ -49,11 +50,15 @@ export default class App extends React.Component {
   }
 
   deleteFromCart(productId) {
-    fetch('api/cart/' + productId, { method: 'DELETE' }).then(() => {
+    fetch('api/cart/' + productId, { method: 'DELETE' }).then(result => {
       const newCart = [...this.state.cart];
       const deleteIndex = newCart.findIndex(product => product.productId === productId);
       newCart.splice(deleteIndex, 1);
-      this.setState({ cart: newCart });
+      let cartTotal = 0;
+      for (let i = 0; i < newCart.length; i++) {
+        cartTotal += newCart[i].price * newCart[i].quantity;
+      }
+      this.setState({ cart: newCart, total: cartTotal });
     });
   }
 
@@ -71,7 +76,7 @@ export default class App extends React.Component {
     } else if (this.state.view.name === 'details') {
       renderView = <ProductDetails productId={this.state.view.params} setView={this.setView} addToCart={this.addToCart}/>;
     } else if (this.state.view.name === 'cart') {
-      renderView = <CartSummary addToCart={this.addToCart} setView={this.setView} cart={this.state.cart} total={this.state.total}/>;
+      renderView = <CartSummary deleteFromCart={this.deleteFromCart} addToCart={this.addToCart} setView={this.setView} cart={this.state.cart} total={this.state.total}/>;
     } else if (this.state.view.name === 'checkout') {
       renderView = <CheckoutForm total={this.state.total} setView={this.setView} placeOrder={this.placeOrder}/>;
     }

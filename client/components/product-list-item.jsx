@@ -40,15 +40,11 @@ class ProductListItem extends React.Component {
 
   render() {
 
-    const isMobile = window.innerWidth <= 500;
     const priceStr = this.props.item.price.toString();
     const price = priceStr.slice(0, priceStr.length - 2) + '.' + priceStr.slice(priceStr.length - 2);
-    let colClass = 'col-3 m-3';
-    if (isMobile) {
-      colClass = 'col-10 m-1';
-    }
+
     return (<>
-      <div className={`list-item ${colClass}`}>
+      <div className={'list-item col-3 m-3 product-list-item'}>
         <div className="d-flex flex-column justify-content-between h-100">
           <div onClick={this.handleClick}>
             <div className="d-flex justify-content-center">
@@ -63,7 +59,7 @@ class ProductListItem extends React.Component {
               <div className="input-group-prepend">
                 <button className="btn btn-outline-secondary" type="button" onClick={this.handleClickMinus}>-</button>
               </div>
-              <input type="number" className=" form-control text-center" value={this.state.count} onChange={this.handleChange} aria-label="" aria-describedby="basic-addon1"></input>
+              <input type="number" className=" form-control text-center" value={this.state.count} onChange={this.handleChange} aria-label="" aria-describedby="basic-addon1" min="0"></input>
               <div className="input-group-append">
                 <button className="btn btn-outline-secondary" type="button" onClick={this.handleClickPlus}>+</button>
               </div>

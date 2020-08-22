@@ -18,7 +18,7 @@ class Header extends React.Component {
   render() {
     return (
       <header className="pl-3 bg-purple row justify-content-between">
-        <h2 onClick={this.homeClick} className="m-3 text-light">
+        <h2 onClick={this.homeClick} className="m-3 text-light header-title">
           <i className="fab fa-pagelines" aria-hidden="true"></i> Wicked Sales
         </h2>
 

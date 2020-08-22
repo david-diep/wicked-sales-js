@@ -9,13 +9,19 @@ class CartSummaryItem extends React.Component {
 
   componentDidMount() {
     this.setState({ count: this.props.item.quantity, loading: false });
-
   }
 
   handleChange() {
+
     var newQuantity = parseInt(event.target.value);
-    this.setState({ count: newQuantity });
-    this.props.addToCart(this.props.item.productId, newQuantity);
+    if (newQuantity === 0) {
+      this.props.deleteFromCart(this.props.item.productId);
+
+    } else {
+      this.setState({ count: newQuantity });
+      this.props.addToCart(this.props.item.productId, newQuantity);
+    }
+
   }
 
   render() {
@@ -41,7 +47,7 @@ class CartSummaryItem extends React.Component {
         </div>
         <div className="d-flex flex-column align-items-center">
           <h5 className="mb-2">Quantity</h5>
-          <input type="number" className="w-25 form-control text-center" value={this.state.count} onChange={this.handleChange} ></input>
+          <input type="number" className="w-25 form-control text-center" value={this.state.count} onChange={this.handleChange} min="0"></input>
         </div>
         <div className="d-flex flex-column align-items-center">
           <h5 className="mb-2">Total Price</h5>

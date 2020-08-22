@@ -3,7 +3,7 @@ import React from 'react';
 class CheckoutForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { name: '', creditCard: '', shippingAddress: '' };
+    this.state = { name: '', creditCard: '', shippingAddress: '', errorMessage: '' };
     this.handleName = this.handleName.bind(this);
     this.handleCC = this.handleCC.bind(this);
     this.handleAddress = this.handleAddress.bind(this);
@@ -17,8 +17,12 @@ class CheckoutForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const order = { name: this.state.name, creditCard: this.state.creditCard, shippingAddress: this.state.shippingAddress };
-    this.props.placeOrder(order);
+    if (this.state.name && this.state.shippingAddress && this.state.creditCard) {
+      const order = { name: this.state.name, creditCard: this.state.creditCard, shippingAddress: this.state.shippingAddress };
+      this.props.placeOrder(order);
+    } else {
+      this.setState({ errorMessage: 'Cannot fulfill order without complete form.' });
+    }
   }
 
   handleName(event) {
@@ -41,6 +45,7 @@ class CheckoutForm extends React.Component {
       const totalStr = this.props.total.toString();
       total = totalStr.slice(0, totalStr.length - 2) + '.' + totalStr.slice(totalStr.length - 2);
     }
+
     return (<>
 
       <form className="container">
@@ -48,16 +53,17 @@ class CheckoutForm extends React.Component {
         <h4 className="text-secondary">Order Total: ${total}</h4>
         <div className="form-group">
           <label htmlFor="name-line">Name</label>
-          <input onChange={this.handleName} value={this.state.name} className="form-control" id="name-line"></input>
+          <input onChange={this.handleName} value={this.state.name} className="form-control" id="name-line" required></input>
         </div>
         <div className="form-group">
           <label htmlFor="cc-line">Credit Card</label>
-          <input onChange={this.handleCC} value={this.state.creditCard} className="form-control" id="cc-line"></input>
+          <input onChange={this.handleCC} value={this.state.creditCard} className="form-control" id="cc-line" required></input>
         </div>
         <div className="form-group">
           <label htmlFor="address-line">Shipping Address</label>
-          <textarea onChange={this.handleAddress} value={this.state.shippingAddress} className="form-control" id="address-line" rows="4"></textarea>
+          <textarea onChange={this.handleAddress} value={this.state.shippingAddress} className="form-control" id="address-line" rows="4" required></textarea>
         </div>
+        <p className="text-center text-danger">{this.state.errorMessage}</p>
         <div className="row justify-content-between align-items-center">
           <p className="back-text p-3" onClick={this.backClick}>&lt;Continue Shopping</p>
           <button className="btn btn-primary" onClick={this.handleSubmit}>Place Order</button>

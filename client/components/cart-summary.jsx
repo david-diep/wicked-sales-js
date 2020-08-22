@@ -4,16 +4,23 @@ import CartSummaryItem from './cart-summary-item';
 class CartSummary extends React.Component {
   constructor(props) {
     super(props);
+    this.state = { errorMessage: '' };
     this.backClick = this.backClick.bind(this);
     this.checkout = this.checkout.bind(this);
   }
 
   backClick() {
+    this.setState = { errorMessage: '' };
     this.props.setView('catalog', {});
   }
 
   checkout() {
-    this.props.setView('checkout', {});
+    if (this.props.cart.length > 0) {
+      this.setState({ errorMessage: '' });
+      this.props.setView('checkout', {});
+    } else {
+      this.setState({ errorMessage: 'Cannot checkout with an empty cart.' });
+    }
   }
 
   render() {
@@ -31,9 +38,10 @@ class CartSummary extends React.Component {
         <h2>My Cart</h2>
         <div className="col justify-content-center">
           {this.props.cart.map((item, index) => (
-            <CartSummaryItem addToCart={this.props.addToCart} key={index} item={item} />
+            <CartSummaryItem addToCart={this.props.addToCart} deleteFromCart={this.props.deleteFromCart} key={index} item={item} />
           )
           )}
+          <p className="text-center text-danger">{this.state.errorMessage}</p>
         </div >
         <div className="row justify-content-between align-items-center">
           <h2 className="m-2">Cart Total: ${total}</h2>
