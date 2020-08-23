@@ -5,10 +5,15 @@ class CartSummaryItem extends React.Component {
     super(props);
     this.state = { count: 0, loading: true };
     this.handleChange = this.handleChange.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   componentDidMount() {
     this.setState({ count: this.props.item.quantity, loading: false });
+  }
+
+  handleDelete() {
+    this.props.deleteFromCart(this.props.item.productId);
   }
 
   handleChange() {
@@ -48,6 +53,7 @@ class CartSummaryItem extends React.Component {
         <div className="d-flex flex-column align-items-center">
           <h5 className="mb-2">Quantity</h5>
           <input type="number" className="w-25 form-control text-center" value={this.state.count} onChange={this.handleChange} min="0"></input>
+          <button className="btn btn-danger mt-5" onClick={this.handleDelete}>Remove from Cart</button>
         </div>
         <div className="d-flex flex-column align-items-center">
           <h5 className="mb-2">Total Price</h5>
