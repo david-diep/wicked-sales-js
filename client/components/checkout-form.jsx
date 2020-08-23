@@ -53,15 +53,15 @@ class CheckoutForm extends React.Component {
         <h4 className="text-secondary">Order Total: ${total}</h4>
         <div className="form-group">
           <label htmlFor="name-line">Name</label>
-          <input onChange={this.handleName} value={this.state.name} className="form-control" id="name-line" required></input>
+          <input onChange={this.handleName} value={this.state.name} className="form-control" id="name-line"></input>
         </div>
         <div className="form-group">
           <label htmlFor="cc-line">Credit Card</label>
-          <input onChange={this.handleCC} value={this.state.creditCard} className="form-control" id="cc-line" required></input>
+          <input onChange={this.handleCC} value={this.state.creditCard} className="form-control" id="cc-line" ></input>
         </div>
         <div className="form-group">
           <label htmlFor="address-line">Shipping Address</label>
-          <textarea onChange={this.handleAddress} value={this.state.shippingAddress} className="form-control" id="address-line" rows="4" required></textarea>
+          <textarea onChange={this.handleAddress} value={this.state.shippingAddress} className="form-control" id="address-line" rows="4"></textarea>
         </div>
         <p className="text-center text-danger">{this.state.errorMessage}</p>
         <div className="row justify-content-between align-items-center">
