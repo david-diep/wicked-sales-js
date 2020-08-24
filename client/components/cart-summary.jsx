@@ -43,9 +43,9 @@ class CartSummary extends React.Component {
           )}
           <p className="text-center text-danger">{this.state.errorMessage}</p>
         </div >
-        <div className="row justify-content-between align-items-center">
+        <div className="row align-items-center bottom-cart-row">
           <h2 className="m-2">Cart Total: ${total}</h2>
-          <button onClick={this.checkout} className="btn btn-primary">Go to Checkout</button>
+          <button onClick={this.checkout} className="btn btn-primary mb-2">Go to Checkout</button>
         </div>
       </div>
     </>

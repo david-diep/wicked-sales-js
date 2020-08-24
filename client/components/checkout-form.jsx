@@ -19,7 +19,7 @@ class CheckoutForm extends React.Component {
     event.preventDefault();
     if (this.state.name && this.state.shippingAddress && this.state.creditCard) {
       const order = { name: this.state.name, creditCard: this.state.creditCard, shippingAddress: this.state.shippingAddress };
-      this.props.placeOrder(order);
+      this.props.saveOrder(order);
     } else {
       this.setState({ errorMessage: 'Cannot fulfill order without complete form.' });
     }
