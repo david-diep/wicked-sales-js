@@ -52,7 +52,7 @@ class OrderSummary extends React.Component {
         </div >
         <div className="row bottom-cart-row align-items-center">
           <h2 className="m-2">Order Total: ${total}</h2>
-          <button onClick={this.submitOrder} className="btn btn-primary mb-2">Confirm Order</button>
+          <button onClick={this.submitOrder} className="btn btn-primary mb-2 mr-2">Confirm Order</button>
         </div>
       </div>
     </>

@@ -45,7 +45,7 @@ class CartSummary extends React.Component {
         </div >
         <div className="row align-items-center bottom-cart-row">
           <h2 className="m-2">Cart Total: ${total}</h2>
-          <button onClick={this.checkout} className="btn btn-primary mb-2">Go to Checkout</button>
+          <button onClick={this.checkout} className="btn btn-primary m-2">Go to Checkout</button>
         </div>
       </div>
     </>

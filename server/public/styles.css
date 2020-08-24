@@ -10,9 +10,6 @@ body{
 .w-35{
   width:35%;
 }
-.order-item-row{
-  justify-content: space-between;
-}
 .header-title{
   cursor: pointer;
 }
@@ -36,9 +33,10 @@ body{
   cursor: pointer;
   color:grey;
 }
-.top-order-row{
-  justify-content: space-between;
-}
+
+.bottom-cart-row, .order-item-row, .top-order-row{
+    justify-content: space-between;
+  }
 .cart{
   cursor: pointer;
 }
@@ -47,18 +45,12 @@ body{
   object-fit: contain;
   max-height:300px;
 }
-.bottom-cart-row{
-    justify-content: space-around;
-  }
 @media only screen and (max-width: 600px){
   .product-list-item{
     max-width:90%;
     flex:none;
   }
-  .order-item-row{
-    justify-content: flex-end;
-  }
-  .bottom-cart-row{
+  .order-item-row,.bottom-cart-row{
     justify-content: flex-end;
   }
   .summary-img{
