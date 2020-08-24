@@ -1,32 +1,13 @@
 import React from 'react';
 
-class CartSummaryItem extends React.Component {
+class OrderSummaryItem extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { count: 0, loading: true };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleDelete = this.handleDelete.bind(this);
+    this.state = { loading: true };
   }
 
   componentDidMount() {
-    this.setState({ count: this.props.item.quantity, loading: false });
-  }
-
-  handleDelete() {
-    this.props.deleteFromCart(this.props.item.productId);
-  }
-
-  handleChange() {
-
-    var newQuantity = parseInt(event.target.value);
-    if (newQuantity === 0) {
-      this.props.deleteFromCart(this.props.item.productId);
-
-    } else {
-      this.setState({ count: newQuantity });
-      this.props.addToCart(this.props.item.productId, newQuantity);
-    }
-
+    this.setState({ loading: false });
   }
 
   render() {
@@ -42,7 +23,7 @@ class CartSummaryItem extends React.Component {
     }
 
     return (<>
-      <div className="summary-item row p-3 m-2 justify-content-between">
+      <div className="summary-item row p-3 m-2 order-item-row">
 
         <img className="summary-img" src={this.props.item.image}></img>
         <div className="w-35 mx-1">
@@ -52,8 +33,7 @@ class CartSummaryItem extends React.Component {
         </div>
         <div className="d-flex flex-column align-items-center">
           <h5 className="mb-2">Quantity</h5>
-          <input type="number" className="w-25 form-control text-center" value={this.state.count} onChange={this.handleChange} min="0"></input>
-          <button className="btn btn-danger mt-2" onClick={this.handleDelete}>Remove from Cart</button>
+          <p className="w-25 text-center">{this.props.item.quantity}</p>
         </div>
         <div className="d-flex flex-column align-items-center">
           <h5 className="mb-2">Total Price</h5>
@@ -65,4 +45,4 @@ class CartSummaryItem extends React.Component {
   }
 }
 
-export default CartSummaryItem;
+export default OrderSummaryItem;
