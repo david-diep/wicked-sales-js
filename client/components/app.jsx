@@ -5,16 +5,18 @@ import ProductDetails from './product-details';
 import CartSummary from './cart-summary';
 import CheckoutForm from './checkout-form';
 import OrderSummary from './order-summary';
+import { Modal } from 'react-bootstrap';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { view: { name: 'catalog', params: {} }, cart: [], total: 0, order: {} };
+    this.state = { view: { name: 'catalog', params: {} }, cart: [], total: 0, order: {}, modal: true };
     this.setView = this.setView.bind(this);
     this.addToCart = this.addToCart.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
     this.deleteFromCart = this.deleteFromCart.bind(this);
     this.saveOrder = this.saveOrder.bind(this);
+    this.handleClose = this.handleClose.bind(this);
   }
 
   setView(name, params = {}) {
@@ -23,6 +25,12 @@ export default class App extends React.Component {
 
   componentDidMount() {
     this.getCartItems();
+  }
+
+  handleClose() {
+    this.setState({
+      modal: false
+    });
   }
 
   getCartItems() {
@@ -91,6 +99,15 @@ export default class App extends React.Component {
     return (<>
       <Header cartNum={cartNum} setView={this.setView}/>
       {renderView}
+      <Modal show={this.state.modal} onHide={this.handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Welcome!</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>This isn&#39;t a real storefront, and all purchases are void. Please do not use your actual information!</Modal.Body>
+        <Modal.Footer>
+          <button className="btn btn-danger" onClick={this.handleClose}>Close</button>
+        </Modal.Footer>
+      </Modal>
     </>);
   }
 }
