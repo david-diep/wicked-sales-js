@@ -56,8 +56,15 @@ export default class App extends React.Component {
       .catch(err => console.error(err));
   }
 
-  addToCart(productId, quantity = 1) {
-    fetch('/api/cart/' + productId, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ quantity: quantity }) })
+  addToCart(productId, quantity = 1, overwrite = false) {
+    let setQuantity = quantity;
+    if (!overwrite) {
+      const index = this.state.cart.findIndex(item => item.productId === productId);
+      if (index >= 0) {
+        setQuantity += this.state.cart[index].quantity;
+      }
+    }
+    fetch('/api/cart/' + productId, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ quantity: setQuantity }) })
       .then(res => {
         this.getCartItems();
       });
