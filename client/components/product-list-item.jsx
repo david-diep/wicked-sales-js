@@ -44,7 +44,7 @@ class ProductListItem extends React.Component {
     const price = priceStr.slice(0, priceStr.length - 2) + '.' + priceStr.slice(priceStr.length - 2);
 
     return (<>
-      <div className={'list-item col-3 m-3 product-list-item'}>
+      <div className={'list-item col-lg-3 col-md-5 m-3 product-list-item'}>
         <div className="d-flex flex-column justify-content-between h-100">
           <div onClick={this.handleClick}>
             <div className="d-flex justify-content-center">
@@ -54,8 +54,8 @@ class ProductListItem extends React.Component {
             <p>${price}</p>
             <p>{this.props.item.shortDescription}</p>
           </div>
-          <div className="row justify-content-between ">
-            <div className="input-group mb-2 ml-2 w-35">
+          <div className="row justify-content-between flex-wrap">
+            <div className="input-group mb-2 px-2 w-35 flex flex-nowrap">
               <div className="input-group-prepend">
                 <button className="btn btn-outline-secondary" type="button" onClick={this.handleClickMinus}>-</button>
               </div>
@@ -64,7 +64,7 @@ class ProductListItem extends React.Component {
                 <button className="btn btn-outline-secondary" type="button" onClick={this.handleClickPlus}>+</button>
               </div>
             </div>
-            <button onClick={this.addToCart} className="btn btn-outline-success mb-2 mr-2">Add to Cart</button>
+            <button onClick={this.addToCart} className="btn btn-outline-success mb-2 mx-2">Add to Cart</button>
           </div>
         </div>
       </div>

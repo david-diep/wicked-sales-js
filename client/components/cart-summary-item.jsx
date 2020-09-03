@@ -24,7 +24,7 @@ class CartSummaryItem extends React.Component {
 
     } else {
       this.setState({ count: newQuantity });
-      this.props.addToCart(this.props.item.productId, newQuantity);
+      this.props.addToCart(this.props.item.productId, newQuantity, true);
     }
 
   }
@@ -42,7 +42,7 @@ class CartSummaryItem extends React.Component {
     }
 
     return (<>
-      <div className="summary-item row p-3 m-2 justify-content-between">
+      <div className="summary-item row p-3 m-2 justify-content-lg-between">
 
         <img className="summary-img" src={this.props.item.image}></img>
         <div className="w-35 mx-1">
@@ -55,7 +55,7 @@ class CartSummaryItem extends React.Component {
           <input type="number" className="w-25 form-control text-center" value={this.state.count} onChange={this.handleChange} min="0"></input>
           <button className="btn btn-danger mt-2" onClick={this.handleDelete}>Remove from Cart</button>
         </div>
-        <div className="d-flex flex-column align-items-center">
+        <div className="d-flex flex-column align-items-center pt-3">
           <h5 className="mb-2">Total Price</h5>
           <p>${totalPrice}</p>
         </div>

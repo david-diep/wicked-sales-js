@@ -35,7 +35,7 @@ class OrderSummaryItem extends React.Component {
           <h5 className="mb-2">Quantity</h5>
           <p className="w-25 text-center">{this.props.item.quantity}</p>
         </div>
-        <div className="d-flex flex-column align-items-center">
+        <div className="d-flex flex-column align-items-center px-3">
           <h5 className="mb-2">Total Price</h5>
           <p>${totalPrice}</p>
         </div>
