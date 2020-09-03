@@ -87,7 +87,9 @@ export default class App extends React.Component {
     let renderView;
     let cartNum = 0;
     if (this.state.cart.length > 1) {
-      cartNum = this.state.cart.reduce((a, b) => a.quantity + b.quantity);
+      cartNum = this.state.cart.reduce((acc, b) => {
+        return acc + b.quantity;
+      }, 0);
     } else if (this.state.cart.length === 1) {
       cartNum = this.state.cart[0].quantity;
     }
