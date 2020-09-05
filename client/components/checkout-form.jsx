@@ -50,6 +50,7 @@ class CheckoutForm extends React.Component {
 
       <form className="container">
         <h2 className="mt-4">Checkout</h2>
+        <p className="text-danger">Important: Do not use your real information. This isn&apos;t a real commerce site.</p>
         <h4 className="text-secondary">Order Total: ${total}</h4>
         <div className="form-group">
           <label htmlFor="name-line">Name</label>
