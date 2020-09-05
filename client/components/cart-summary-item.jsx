@@ -55,7 +55,7 @@ class CartSummaryItem extends React.Component {
           <input type="number" className="w-25 form-control text-center" value={this.state.count} onChange={this.handleChange} min="0"></input>
           <button className="btn btn-danger mt-2" onClick={this.handleDelete}>Remove from Cart</button>
         </div>
-        <div className="d-flex flex-column align-items-center pt-3">
+        <div className="d-flex flex-column align-items-center">
           <h5 className="mb-2">Total Price</h5>
           <p>${totalPrice}</p>
         </div>
