@@ -2,7 +2,7 @@
  A full stack Node.js &amp; React shopping cart app.
 
  ## Live Site
- Try the live site here: http://wicked-sales.david-diep.com/
+ Try the live site here: https://wicked-sales.david-diep.com/
  
  ## Technologies Used
  <li>PostgreSQL</li>
