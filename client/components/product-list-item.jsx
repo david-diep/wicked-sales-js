@@ -3,7 +3,7 @@ import React from 'react';
 class ProductListItem extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { count: 0 };
+    this.state = { count: 1 };
     this.handleClick = this.handleClick.bind(this);
     this.handleClickPlus = this.handleClickPlus.bind(this);
     this.handleClickMinus = this.handleClickMinus.bind(this);
@@ -17,8 +17,8 @@ class ProductListItem extends React.Component {
 
   handleClickMinus() {
     this.setState(prevState => {
-      if (prevState.count === 0) {
-        return { count: 0 };
+      if (prevState.count === 1) {
+        return { count: 1 };
       }
       return { count: prevState.count - 1 };
     });

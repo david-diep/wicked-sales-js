@@ -13,6 +13,7 @@ app.use(sessionMiddleware);
 
 app.use(express.json());
 
+// making sure the server is running
 app.get('/api/health-check', (req, res, next) => {
   db.query('select \'successfully connected\' as "message"')
     .then(result => res.json(result.rows[0]))
@@ -99,7 +100,7 @@ app.get('/api/cart', (req, res, next) => {
     );
 });
 
-// add a product to cart with productId and return the cartItem with details
+// add a product to cart with productId of a certain quantity and return the cartItem with details
 app.post('/api/cart/:productId', (req, res, next) => {
   const productId = parseInt(req.params.productId, 10);
   if (!Number.isInteger(productId) || productId <= 0) {
@@ -144,8 +145,8 @@ app.post('/api/cart/:productId', (req, res, next) => {
         );
       }
 
-    }).then( // cartId is clear
-      result => { // second then statement - should recieve an object that has a cartId and price
+    }).then(
+      result => {
         req.session.cartId = result.cartId;
         var price = result.price;
         var cartId = result.cartId;

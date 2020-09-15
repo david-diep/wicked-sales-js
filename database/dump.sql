@@ -200,7 +200,21 @@ ALTER TABLE ONLY public.products ALTER COLUMN "productId" SET DEFAULT nextval('p
 
 COPY public."cartItems" ("cartId", "productId", price, quantity) FROM stdin;
 9	1	1999	2
-10	2	1899	1
+10	2	1899	4
+10	1	1999	2
+11	1	1999	1
+12	5	2099	1
+13	5	2099	1
+14	2	1899	2
+15	5	2099	9
+15	2	1899	1
+16	2	1899	1
+17	5	2099	2
+18	1	1999	7
+19	2	1899	4
+19	4	2399	4
+19	1	1999	20
+20	2	1899	3
 \.
 
 
@@ -215,6 +229,16 @@ COPY public.carts ("cartId", "createdAt") FROM stdin;
 8	2020-07-27 13:04:11.190812-07
 9	2020-08-19 17:31:27.849174-07
 10	2020-08-20 15:00:27.918228-07
+11	2020-08-21 17:23:20.042708-07
+12	2020-08-21 20:38:41.460398-07
+13	2020-08-23 00:15:33.021367-07
+14	2020-08-23 21:37:53.731129-07
+15	2020-08-23 23:36:50.460258-07
+16	2020-08-24 00:33:52.610189-07
+17	2020-08-24 00:34:19.812354-07
+18	2020-09-02 17:47:56.440923-07
+19	2020-09-03 11:51:53.583682-07
+20	2020-09-04 19:15:19.939332-07
 \.
 
 
@@ -225,6 +249,10 @@ COPY public.carts ("cartId", "createdAt") FROM stdin;
 COPY public.orders ("orderId", "cartId", name, "creditCard", "shippingAddress", "createdAt") FROM stdin;
 1	7	David	123456789	123 Neverland	2020-07-26 22:57:28.474113-07
 2	8	DAvid	000000	example1	2020-07-27 14:41:49.915274-07
+3	11	David	asdf	asdf	2020-08-21 19:20:11.66213-07
+4	14	asdf	asdf	asdf	2020-08-23 23:34:37.502087-07
+5	15	sss	sss	ss	2020-08-24 00:26:09.977275-07
+6	16	asdf	asdf	asdf	2020-08-24 00:34:08.03429-07
 \.
 
 
@@ -233,15 +261,15 @@ COPY public.orders ("orderId", "cartId", name, "creditCard", "shippingAddress", 
 --
 
 COPY public.products ("productId", name, price, image, "shortDescription", "longDescription") FROM stdin;
-5	Penguin	2099	/images/penguin.png	A Penguin Plushie. It's already wearing a tuxedo.	Lorem ipsum dolor amet fashion axe pour-over jianbing, adaptogen waistcoat tacos master cleanse pitchfork next level. Thundercats pour-over chartreuse 90s. Master cleanse hot chicken ennui offal. Freegan slow-carb offal hell of. Umami polaroid wolf slow-carb next level. Gentrify cardigan seitan, kombucha tacos chambray roof party typewriter man braid. Tote bag lo-fi hell of chia fam hammock\\\\n.Aesthetic photo booth la croix, vaporware leggings biodiesel man braid tumeric skateboard tousled slow-carb four dollar toast synth pabst pickled. Typewriter church-key chia slow-carb vice gochujang actually. Shoreditch austin woke hot chicken, single-origin coffee ugh affogato four loko green juice. Migas iPhone four dollar toast mustache.
-1	Blue Shark	1999	/images/b-shark.png	A Blue Shark Plushie. You can feel its thirst for blood.	Lorem ipsum dolor amet fashion axe pour-over jianbing, adaptogen waistcoat tacos master cleanse pitchfork next level. Thundercats pour-over chartreuse 90s. Master cleanse hot chicken ennui offal. Freegan slow-carb offal hell of. Umami polaroid wolf slow-carb next level. Gentrify cardigan seitan, kombucha tacos chambray roof party typewriter man braid. Tote bag lo-fi hell of chia fam hammock\\\\n.Aesthetic photo booth la croix, vaporware leggings biodiesel man braid tumeric skateboard tousled slow-carb four dollar toast synth pabst pickled. Typewriter church-key chia slow-carb vice gochujang actually. Shoreditch austin woke hot chicken, single-origin coffee ugh affogato four loko green juice. Migas iPhone four dollar toast mustache.
-2	Grey Shark	1899	/images/g-shark.png	A Grey Shark Plushie. The Fearsome Big Fish Catcher.	Lorem ipsum dolor amet fashion axe pour-over jianbing, adaptogen waistcoat tacos master cleanse pitchfork next level. Thundercats pour-over chartreuse 90s. Master cleanse hot chicken ennui offal. Freegan slow-carb offal hell of. Umami polaroid wolf slow-carb next level. Gentrify cardigan seitan, kombucha tacos chambray roof party typewriter man braid. Tote bag lo-fi hell of chia fam hammock\\\\n.Aesthetic photo booth la croix, vaporware leggings biodiesel man braid tumeric skateboard tousled slow-carb four dollar toast synth pabst pickled. Typewriter church-key chia slow-carb vice gochujang actually. Shoreditch austin woke hot chicken, single-origin coffee ugh affogato four loko green juice. Migas iPhone four dollar toast mustache.
-3	Green Dinosaur	2199	/images/g-dino.png	A Green Dino Plushie. It's probably a herbavore, but don't let that fool you.	Lorem ipsum dolor amet fashion axe pour-over jianbing, adaptogen waistcoat tacos master cleanse pitchfork next level. Thundercats pour-over chartreuse 90s. Master cleanse hot chicken ennui offal. Freegan slow-carb offal hell of. Umami polaroid wolf slow-carb next level. Gentrify cardigan seitan, kombucha tacos chambray roof party typewriter man braid. Tote bag lo-fi hell of chia fam hammock\\\\n.Aesthetic photo booth la croix, vaporware leggings biodiesel man braid tumeric skateboard tousled slow-carb four dollar toast synth pabst pickled. Typewriter church-key chia slow-carb vice gochujang actually. Shoreditch austin woke hot chicken, single-origin coffee ugh affogato four loko green juice. Migas iPhone four dollar toast mustache.
-4	Lion	2399	/images/lion.png	A Lion Plushie. It's mane is a sight to behold.	Lorem ipsum dolor amet fashion axe pour-over jianbing, adaptogen waistcoat tacos master cleanse pitchfork next level. Thundercats pour-over chartreuse 90s. Master cleanse hot chicken ennui offal. Freegan slow-carb offal hell of. Umami polaroid wolf slow-carb next level. Gentrify cardigan seitan, kombucha tacos chambray roof party typewriter man braid. Tote bag lo-fi hell of chia fam hammock\\\\n.Aesthetic photo booth la croix, vaporware leggings biodiesel man braid tumeric skateboard tousled slow-carb four dollar toast synth pabst pickled. Typewriter church-key chia slow-carb vice gochujang actually. Shoreditch austin woke hot chicken, single-origin coffee ugh affogato four loko green juice. Migas iPhone four dollar toast mustache.
-6	Red Dinosaur	2099	/images/r-dino.png	A Red Dinosaur. Contrary to popular belief, it was more a scavenger than a predator.	Lorem ipsum dolor amet fashion axe pour-over jianbing, adaptogen waistcoat tacos master cleanse pitchfork next level. Thundercats pour-over chartreuse 90s. Master cleanse hot chicken ennui offal. Freegan slow-carb offal hell of. Umami polaroid wolf slow-carb next level. Gentrify cardigan seitan, kombucha tacos chambray roof party typewriter man braid. Tote bag lo-fi hell of chia fam hammock\\\\n.Aesthetic photo booth la croix, vaporware leggings biodiesel man braid tumeric skateboard tousled slow-carb four dollar toast synth pabst pickled. Typewriter church-key chia slow-carb vice gochujang actually. Shoreditch austin woke hot chicken, single-origin coffee ugh affogato four loko green juice. Migas iPhone four dollar toast mustache.
-8	Rhino	2999	/images/rhino.png	A Rhino Plush. Don't be fooled, it's horn is soft too.	Lorem ipsum dolor amet fashion axe pour-over jianbing, adaptogen waistcoat tacos master cleanse pitchfork next level. Thundercats pour-over chartreuse 90s. Master cleanse hot chicken ennui offal. Freegan slow-carb offal hell of. Umami polaroid wolf slow-carb next level. Gentrify cardigan seitan, kombucha tacos chambray roof party typewriter man braid. Tote bag lo-fi hell of chia fam hammock\\\\n.Aesthetic photo booth la croix, vaporware leggings biodiesel man braid tumeric skateboard tousled slow-carb four dollar toast synth pabst pickled. Typewriter church-key chia slow-carb vice gochujang actually. Shoreditch austin woke hot chicken, single-origin coffee ugh affogato four loko green juice. Migas iPhone four dollar toast mustache.
-9	Unicorn	3999	/images/unicorn.png	A Unicorn Plush. It is positively magical; magic not included.	Lorem ipsum dolor amet fashion axe pour-over jianbing, adaptogen waistcoat tacos master cleanse pitchfork next level. Thundercats pour-over chartreuse 90s. Master cleanse hot chicken ennui offal. Freegan slow-carb offal hell of. Umami polaroid wolf slow-carb next level. Gentrify cardigan seitan, kombucha tacos chambray roof party typewriter man braid. Tote bag lo-fi hell of chia fam hammock\\\\n.Aesthetic photo booth la croix, vaporware leggings biodiesel man braid tumeric skateboard tousled slow-carb four dollar toast synth pabst pickled. Typewriter church-key chia slow-carb vice gochujang actually. Shoreditch austin woke hot chicken, single-origin coffee ugh affogato four loko green juice. Migas iPhone four dollar toast mustache.
-7	Sting Ray	1999	/images/ray.png	A Sting Ray Plush. Soft and has it's stingers removed.	Lorem ipsum dolor amet fashion axe pour-over jianbing, adaptogen waistcoat tacos master cleanse pitchfork next level. Thundercats pour-over chartreuse 90s. Master cleanse hot chicken ennui offal. Freegan slow-carb offal hell of. Umami polaroid wolf slow-carb next level. Gentrify cardigan seitan, kombucha tacos chambray roof party typewriter man braid. Tote bag lo-fi hell of chia fam hammock\\\\n.Aesthetic photo booth la croix, vaporware leggings biodiesel man braid tumeric skateboard tousled slow-carb four dollar toast synth pabst pickled. Typewriter church-key chia slow-carb vice gochujang actually. Shoreditch austin woke hot chicken, single-origin coffee ugh affogato four loko green juice. Migas iPhone four dollar toast mustache.
+5	Penguin	2099	/images/penguin.png	A Penguin Plushie. It's already wearing a tuxedo.	An ideal companion for the bedside and couch. Made of premium plush fabrics; Feather PP cotton filler - Soft plush toys. High quality internals are comfortable to hold and support lumbar.  Not machine washable. Made in Vietnam.
+1	Blue Shark	1999	/images/b-shark.png	A Blue Shark Plushie. You can feel its thirst for blood.	An ideal companion for the bedside and couch. Made of premium plush fabrics; Feather PP cotton filler - Soft plush toys. High quality internals are comfortable to hold and support lumbar.  Not machine washable. Made in Vietnam.
+2	Grey Shark	1899	/images/g-shark.png	A Grey Shark Plushie. The Fearsome Big Fish Catcher.	An ideal companion for the bedside and couch. Made of premium plush fabrics; Feather PP cotton filler - Soft plush toys. High quality internals are comfortable to hold and support lumbar.  Not machine washable. Made in Vietnam.
+3	Green Dinosaur	2199	/images/g-dino.png	A Green Dino Plushie. It's probably a herbavore, but don't let that fool you.	An ideal companion for the bedside and couch. Made of premium plush fabrics; Feather PP cotton filler - Soft plush toys. High quality internals are comfortable to hold and support lumbar.  Not machine washable. Made in Vietnam.
+4	Lion	2399	/images/lion.png	A Lion Plushie. It's mane is a sight to behold.	An ideal companion for the bedside and couch. Made of premium plush fabrics; Feather PP cotton filler - Soft plush toys. High quality internals are comfortable to hold and support lumbar.  Not machine washable. Made in Vietnam.
+6	Red Dinosaur	2099	/images/r-dino.png	A Red Dinosaur. Contrary to popular belief, it was more a scavenger than a predator.	An ideal companion for the bedside and couch. Made of premium plush fabrics; Feather PP cotton filler - Soft plush toys. High quality internals are comfortable to hold and support lumbar.  Not machine washable. Made in Vietnam.
+8	Rhino	2999	/images/rhino.png	A Rhino Plush. Don't be fooled, it's horn is soft too.	An ideal companion for the bedside and couch. Made of premium plush fabrics; Feather PP cotton filler - Soft plush toys. High quality internals are comfortable to hold and support lumbar.  Not machine washable. Made in Vietnam.
+9	Unicorn	3999	/images/unicorn.png	A Unicorn Plush. It is positively magical; magic not included.	An ideal companion for the bedside and couch. Made of premium plush fabrics; Feather PP cotton filler - Soft plush toys. High quality internals are comfortable to hold and support lumbar.  Not machine washable. Made in Vietnam.
+7	Sting Ray	1999	/images/ray.png	A Sting Ray Plush. Soft and has it's stingers removed.	An ideal companion for the bedside and couch. Made of premium plush fabrics; Feather PP cotton filler - Soft plush toys. High quality internals are comfortable to hold and support lumbar.  Not machine washable. Made in Vietnam.
 \.
 
 
@@ -249,14 +277,14 @@ COPY public.products ("productId", name, price, image, "shortDescription", "long
 -- Name: carts_cartId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public."carts_cartId_seq"', 10, true);
+SELECT pg_catalog.setval('public."carts_cartId_seq"', 20, true);
 
 
 --
 -- Name: orders_orderId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public."orders_orderId_seq"', 2, true);
+SELECT pg_catalog.setval('public."orders_orderId_seq"', 6, true);
 
 
 --
