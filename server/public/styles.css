@@ -30,6 +30,7 @@ body{
 .detail-image{
   max-width: 50%;
   margin-left:1rem;
+  object-fit: contain;
 }
 
 .back-text{
