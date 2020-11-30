@@ -67,7 +67,7 @@ class CheckoutForm extends React.Component {
         <p className="text-center text-danger">{this.state.errorMessage}</p>
         <div className="row justify-content-between align-items-center">
           <p className="back-text p-3" onClick={this.backClick}>&lt;Continue Shopping</p>
-          <button className="btn btn-primary" onClick={this.handleSubmit}>Place Order</button>
+          <button className="btn btn-primary" onClick={this.handleSubmit}>Go to Order Summary</button>
         </div>
       </form>
 
